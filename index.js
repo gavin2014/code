@@ -149,7 +149,7 @@ var Lock = (function() {
 })();
 
 var token = new Token(tokenAbi, '0x9483a0563410ff0825593ae1734f6cc330ffa928');
-var lock = new Lock(lockAbi, '0x9483a0563410ff0825593ae1734f6cc330ffa928');
+var lock = new Lock(lockAbi, '0x38e577167aa15575764ced7f5a7f07f772fc5235');
 var update = {
   init: function() {
     update.address();
