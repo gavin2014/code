@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/purecss@1.0.0/build/pure-min.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/purecss@1.0.0/build/grids-responsive-min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js"></script>
+  </head>
+  <body>
+    <div class="content">
+      <h1>DAPP钱包</h1>
+      <form class="pure-form pure-form-stacked">
+        <fieldset>
+          <legend>钱包信息</legend>
+          <div class="row">钱包地址：<span id="wallet-address"></span></div>
+          <div class="row">DRE余额：<span id="token-balance"></span></div>
+          <div class="row">ETH余额：<span id="eth-balance"></span></div>
+          <div class="row">推荐人：<span id="referrer-address">-</span></div>
+          <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-4-5">
+              <label>推广链接：</label>
+              <input
+                readonly
+                id="referrer-link"
+                class="pure-u-1 pure-u-md-23-24"
+                type="text"
+              />
+            </div>
+            <div class="pure-u-1 pure-u-md-1-5">
+              <label>&nbsp;</label>
+              <button
+                type="button"
+                data-clipboard-target="#referrer-link"
+                class="pure-button button-secondary pure-u-1 copy-btn"
+              >
+                点击复制
+              </button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+      <form class="pure-form pure-form-stacked">
+        <fieldset>
+          <legend>众筹</legend>
+          <div class="row">
+            兑换比例：1ETH = <span id="exchange-rate"></span>DRE
+          </div>
+          <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-2-5">
+              <label>ETH数量：</label>
+              <input
+                id="exchange-eth"
+                step="0.0001"
+                class="pure-u-1 pure-u-md-23-24"
+                type="number"
+              />
+            </div>
+            <div class="pure-u-1 pure-u-md-2-5">
+              <label>可兑换DRE数量：</label>
+              <input
+                id="exchange-token"
+                readonly
+                class="pure-u-1 pure-u-md-23-24"
+                type="text"
+              />
+            </div>
+            <div class="pure-u-1 pure-u-md-1-5">
+              <label>&nbsp;</label>
+              <button
+                id="exchange"
+                type="button"
+                class="pure-button button-success pure-u-1"
+              >
+                点击兑换
+              </button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+      <form class="pure-form pure-form-stacked">
+        <fieldset>
+          <legend>锁仓</legend>
+          <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-2 row">
+              结算倒计时：<span id="count-down">-</span>
+            </div>
+            <div class="pure-u-1 pure-u-md-1-2 row">
+              锁仓数量：<span id="total-lock-num">-</span> DRE
+            </div>
+            <div class="pure-u-1 pure-u-md-1-2 row">
+              静态分红比例：<span id="static-rate">-</span>
+            </div>
+            <div class="pure-u-1 pure-u-md-1-2 row">
+              推荐分红比例：<span id="referrer-rate">5%-3%-2%</span>
+            </div>
+            <div class="pure-u-1 pure-u-md-1-2 row">
+              当前静态分红：<span id="static-bonus">-</span> DRE
+            </div>
+            <div class="pure-u-1 pure-u-md-1-2 row">
+              当前推荐分红：<span id="referrer-bonus">-</span> DRE
+            </div>
+            <div class="pure-u-1 pure-u-md-1-2 row">
+              已结算次数：<span id="take-count">-</span>
+            </div>
+            <div class="pure-u-1 pure-u-md-1-2 row">
+              剩余结算次数：<span id="remain-count">-</span>
+            </div>
+            <div class="pure-u-1 pure-u-md-4-5">
+              <label>锁仓数量：</label>
+              <input
+                id="lock-num"
+                step="0.0001"
+                class="pure-u-1 pure-u-md-23-24"
+                type="number"
+              />
+            </div>
+            <div class="pure-u-1 pure-u-md-1-5">
+              <label>&nbsp;</label>
+              <button
+                id="lock"
+                type="button"
+                class="pure-button button-warning pure-u-1"
+              >
+                点击锁仓
+              </button>
+            </div>
+            <div class="pure-u-1">
+              <label>&nbsp;</label>
+              <button
+                id="take"
+                type="button"
+                class="pure-button pure-button-primary pure-u-1"
+              >
+                结算分红
+              </button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+
+    <script src="./abi.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
